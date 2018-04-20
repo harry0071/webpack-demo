@@ -1,20 +1,20 @@
+* {
+  font-size: 40px;
+}
 @media screen and (max-width: 800px) {
     body {
         background-color:lightblue;
     }
-}* {
-  font-size: 50px;
-}
-@charset "UTF-8";
+}@charset "UTF-8";
 div {
   background: pink;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: blue;
-  -webkit-transform: translateX(30px);
-      -ms-transform: translateX(30px);
-          transform: translateX(30px); }
+  color: green;
+  -webkit-transform: translate(10px, 50px);
+      -ms-transform: translate(10px, 50px);
+          transform: translate(10px, 50px); }
 div p {
-    color: yellow; }
+    color: orange; }
 /* 注释 */

@@ -75,7 +75,8 @@ module.exports = {
 			filename: 'style.css',
 			disable: offExt
 		}),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		//new webpack.NamedModulesPlugin() 查看哪个模块有更新
 	],
 	devServer: {
 		contentBase: './dist',

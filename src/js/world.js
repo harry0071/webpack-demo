@@ -1,3 +1,5 @@
-let world = document.createElement('h1');
-world.textContent = `world`;
-export default world; //将worldo导出去
+export default function world() {
+	let world = document.createElement('h1');
+	world.textContent = `world`;
+	document.querySelector("#root").appendChild(world);
+}
