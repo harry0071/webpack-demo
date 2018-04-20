@@ -1,12 +1,21 @@
-const path = require('path');
+﻿const path = require('path');
 const webpack = require('webpack'); // 用于访问内置插件
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var currentTarget = process.env.npm_lifecycle_event;//获取npm run xxx
+var offExt;
+if (currentTarget == "start") { //npm run start时，禁止使用Ext
+	offExt = true;
+} else {
+	offExt = false;
+
+}
 
 module.exports = {
 	entry: './src/entry.js',
 	output: {
 		filename: 'main.min.js',
-		path: path.resolve(__dirname, 'dist/js')
+		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
 		rules: [{
@@ -62,6 +71,18 @@ module.exports = {
 
 	},
 	plugins: [
-		new ExtractTextPlugin('../css/style.css')
-	]
+		new ExtractTextPlugin({
+			filename: 'style.css',
+			disable: offExt
+		}),
+		new webpack.HotModuleReplacementPlugin()
+	],
+	devServer: {
+		contentBase: './dist',
+		inline: true,
+		hot: true,
+		compress: true,
+		port: 9000,
+		host: "127.0.0.1"
+	}
 };
