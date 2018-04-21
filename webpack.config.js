@@ -2,14 +2,10 @@
 const webpack = require('webpack'); // 用于访问内置插件
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var currentTarget = process.env.npm_lifecycle_event;//获取npm run xxx
-var offExt;
-if (currentTarget == "start") { //npm run start时，禁止使用Ext
-	offExt = true;
-} else {
-	offExt = false;
+const currentTarget = process.env.npm_lifecycle_event;//获取npm run xxx
 
-}
+console.log('npm run : '+currentTarget);
+console.log('process.env.WEBPACK_MODE : '+process.env.WEBPACK_MODE+'\n');
 
 module.exports = {
 	entry: './src/entry.js',
@@ -73,7 +69,7 @@ module.exports = {
 	plugins: [
 		new ExtractTextPlugin({
 			filename: 'style.css',
-			disable: offExt
+			disable: currentTarget == "start"
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		//new webpack.NamedModulesPlugin() 查看哪个模块有更新
