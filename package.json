@@ -36,6 +36,7 @@
     "path": "^0.12.7"
   },
   "browserslist": [
-    "last 4 versions"
+    "last 4 versions",
+    "iOS > 8"
   ]
 }
