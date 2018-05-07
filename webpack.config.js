@@ -1,6 +1,8 @@
 ﻿const path = require('path');
 const webpack = require('webpack'); // 用于访问内置插件
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const glob = require("glob");
+const PurifyCSSPlugin = require("purifycss-webpack");//去除无用css
 
 const currentTarget = process.env.npm_lifecycle_event;//获取npm run xxx
 
@@ -71,8 +73,9 @@ module.exports = {
 			filename: 'style.css',
 			disable: currentTarget == "start"
 		}),
-		new webpack.HotModuleReplacementPlugin(),
-		//new webpack.NamedModulesPlugin() 查看哪个模块有更新
+		/*new PurifyCSSPlugin({
+            paths:glob.sync(path.join(__dirname,"dist/*.html"))
+        }), 去除无用css*/	
 	],
 	devServer: {
 		contentBase: './dist',
@@ -83,3 +86,7 @@ module.exports = {
 		host: "127.0.0.1"
 	}
 };
+if(currentTarget === 'start'){
+	//new webpack.NamedModulesPlugin() 查看哪个模块有更新
+	module.exports.plugins.push(new webpack.NamedModulesPlugin(),new webpack.HotModuleReplacementPlugin())
+}
