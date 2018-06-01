@@ -10,6 +10,8 @@ export default function hello() {
 	});
 	console.log("data:",data);
 
+	var xxx = 'fuck';
+
 	var x = '❀'.repeat(10)
 	console.log("x:",x)
 }

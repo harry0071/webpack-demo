@@ -73,9 +73,9 @@ module.exports = {
 			filename: 'style.css',
 			disable: currentTarget == "start"
 		}),
-		/*new PurifyCSSPlugin({
+		/* PurifyCSSPlugin({
             paths:glob.sync(path.join(__dirname,"dist/*.html"))
-        }), 去除无用css*/	
+        }), new 去除无用css*/	
 	],
 	devServer: {
 		contentBase: './dist',
